@@ -6,12 +6,36 @@
 </head>
 <body>
 <div class='header'>
-	<h1>Learning JavaScript</h1>
+	<h1 id='heading'>Learning JavaScript</h1>
 </div>
 
 <div class='container'>
-	
+	<button onclick="doClick()">Click Me</button>
+	<button onclick="cT(this)">Click Me 2</button>
+	<button onclick='cH1(this)'>Click Me 3</button>
+	<br>
+	<br>
+	<button onclick='date()'>Date</button>
 </div>
+
+<h1 id='time'></h1>
+
+<script type="text/javascript">
+	function doClick(){
+		alert('You Clicked!');
+	}
+	function cT(id){
+		id.innerHTML = 'You Clicked!'
+	}
+	function cH1(id){
+		var heading = document.getElementById('heading')
+		heading.innerHTML = 'You Clicked!'
+	}
+	function date(){
+		var date = document.getElementById('time')
+		date.innerHTML = Date()
+	}
+</script>
 
 </body>
 </html>
