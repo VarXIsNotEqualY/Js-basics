@@ -4,36 +4,65 @@
 	<title>Learning JavaScript</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
-<body>
+<body id='body'>
 <div class='header'>
 	<h1 id='heading'>Learning JavaScript</h1>
 </div>
 
 <div class='container'>
-	<button onclick="doClick()">Click Me</button>
-	<button onclick="cT(this)">Click Me 2</button>
-	<button onclick='cH1(this)'>Click Me 3</button>
-	<br>
-	<br>
-	<button onclick='date()'>Date</button>
+	<form method='POST' name='myForm' action='something.php' onsubmit="return validateForm()">
+		<div>
+			<label>First Name</label>
+			<input type="text" name="firstName" id='firstName' value="">
+		</div>
+		<br>
+		<div>
+			<label>Last Name</label>
+			<input type="text" name="lastName" id='lastName' value="">
+		</div>
+		<br>
+		<div>
+			<label>Background</label>
+			<select name='background' id='background' onchange="cB(this)">
+				<option value='red'>Red</option>
+				<option value='green'>Green</option>
+				<option value='blue'>Blue</option>
+			</select>
+		</div>
+		<div>
+			<br>
+			<input type="submit" name="submit" value="Submit">
+		</div>
+	</form>
 </div>
 
 <h1 id='time'></h1>
 
 <script type="text/javascript">
-	function doClick(){
-		alert('You Clicked!');
+	function cB(x){
+		var body = document.getElementById('body');
+		body.style.backgroundColor = x.value;
 	}
-	function cT(id){
-		id.innerHTML = 'You Clicked!'
-	}
-	function cH1(id){
-		var heading = document.getElementById('heading')
-		heading.innerHTML = 'You Clicked!'
-	}
-	function date(){
-		var date = document.getElementById('time')
-		date.innerHTML = Date()
+	function validateForm(){
+		var firstName = document.forms['myForm']['firstName'].value;
+		var lastName = document.forms['myForm']['lastName'].value;
+
+		if(firstName == null || firstName == ""){
+			alert("First name is required");
+			return false;
+		}
+
+		if(lastName == null || lastName == ""){
+			alert("Last name is required");
+			return false;
+		}
+
+		if(firstName.length <3){
+			alert("First name must be at least 3 chars");
+			return false;
+		}
+
+
 	}
 </script>
 
